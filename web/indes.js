@@ -25,28 +25,28 @@ drop_cntr.addEventListener('dragover', function (event) {
 });
 drop_cntr.addEventListener('drop', function (event) {
     var remove_src = '<img src ="http://www.clker.com/cliparts/e/0/f/4/12428125621652493290X_mark_18x18_02.svg.med.png" style = "width:10px" id ="remove_id" >';
-    alert(event.dataTransfer.getData('cntrId'));
-    var cntrId = event.dataTransfer.getData('cntrId')
-            imgSrc = document.getElementById(cntrId + '_img').getAttribute('src');
+    var cntrId = event.dataTransfer.getData('cntrId');
+    imgSrc = document.getElementById(cntrId + '_img').getAttribute('src');
     caption = document.getElementById(cntrId + '_txt').innerHTML,
-            html = '<div id = "'+ cntrId + 'Container" ><img src=" ' + imgSrc + ' " style = "width:50px;"  />';
+    html = '<div id = "' + cntrId + 'Container" ><img src=" ' + imgSrc + ' " style = "width:50px;"  />';
     html += "<label>" + caption + " </label>";
     html += remove_src + "</div>";
-     if(document.getElementById(cntrId+'Container')===null){
-    document.getElementById('drop_here').insertAdjacentHTML('afterbegin', html);
+    //checking whether the container has duplicate id
+    if (document.getElementById(cntrId + 'Container') === null) {
+        //if no any unique image insert into it
+        document.getElementById('drop_here').insertAdjacentHTML('afterbegin', html);
+    } else {
+        alert('Image alreadyExists');
     }
-    else{ 
-     alert('Exists');
-          }
-        document.getElementById('remove_id').addEventListener('click', function () {
+    document.getElementById('remove_id').addEventListener('click', function () {
 
         var elementToBeRemove = document.getElementById('remove_id');
         elementToBeRemove.parentNode.remove(elementToBeRemove);
-        
+
         //var childDiv = document.getElementById('removeId');
-       
-        
-        
+
+
+
     });
 
 
